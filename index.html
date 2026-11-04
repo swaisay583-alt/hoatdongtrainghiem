@@ -5,66 +5,202 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Đề Cương HĐTN 7 - Lớp 7A7</title>
 <style>
-  /* Giao diện Dark Mode Siêu Cấp */
-  body { 
-    font-family: 'Segoe UI', Tahoma, sans-serif; 
-    background: linear-gradient(135deg, #121413 0%, #1c221f 100%); 
-    color: #e0e0e0; margin: 0; padding: 20px; line-height: 1.6; 
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #0f1210 0%, #1a211d 100%);
+    color: #e0e0e0;
+    margin: 0;
+    padding: 25px 15px;
+    line-height: 1.6;
   }
-  .container { 
-    max-width: 800px; margin: 0 auto; background: #232724; padding: 30px; 
-    border-radius: 12px; border-top: 6px solid #4CAF50; 
-    box-shadow: 0 8px 30px rgba(0,0,0,0.6); 
-  }
-  h1 { text-align: center; color: #4CAF50; margin-bottom: 5px; font-weight: 800; letter-spacing: 1px;}
-  .header-info { text-align: center; font-size: 1.1em; margin-bottom: 20px; font-weight: bold; color: #ffffff; }
   
-  /* Cụm điều khiển Âm thanh */
-  .audio-controls { text-align: center; margin-bottom: 30px; }
-  #musicBtn {
-    background-color: #2c312e; color: #4CAF50; border: 2px solid #4CAF50; 
-    padding: 10px 25px; border-radius: 25px; font-size: 16px; font-weight: bold;
-    cursor: pointer; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 8px;
+  /* Thanh tiến độ làm bài trên cùng */
+  .progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: #1a1e1c;
+    z-index: 9999;
   }
-  #musicBtn:hover { background-color: #4CAF50; color: #fff; box-shadow: 0 0 15px rgba(76, 175, 80, 0.4); }
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50, #81c784);
+    width: 0%;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.8);
+  }
 
-  select, button.submit-btn { width: 100%; padding: 15px; margin-top: 8px; font-size: 16px; border-radius: 8px; box-sizing: border-box; }
-  select { background-color: #1a1e1c; color: #fff; border: 1px solid #4CAF50; cursor: pointer; font-weight: bold; outline: none; }
-  
-  .question-box { margin-bottom: 25px; padding: 25px; border: 1px solid #3a403d; border-radius: 12px; background: #2a2f2c; box-shadow: inset 0 2px 5px rgba(0,0,0,0.2); transition: 0.3s; }
-  .question-box:hover { border-color: #4CAF50; }
-  .question-title { font-weight: bold; margin-bottom: 18px; color: #66bb6a; font-size: 1.15em;}
-  
-  .options label { 
-    display: block; margin-bottom: 12px; cursor: pointer; padding: 12px 15px; 
-    border-radius: 8px; transition: 0.2s; background: #333835; border: 1px solid transparent;
+  .container {
+    max-width: 800px;
+    margin: 10px auto;
+    background: #202422;
+    padding: 30px;
+    border-radius: 14px;
+    border-top: 6px solid #4CAF50;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.7);
   }
-  .options label:hover { background-color: #3e4441; border-color: #66bb6a; transform: translateX(5px); }
-  input[type="radio"] { margin-right: 12px; transform: scale(1.3); accent-color: #4CAF50; cursor: pointer;}
   
-  button.submit-btn { 
-    background: linear-gradient(90deg, #4CAF50, #45a049); color: white; border: none; 
-    font-weight: bold; cursor: pointer; margin-top: 30px; transition: 0.3s; font-size: 18px; 
-    text-transform: uppercase; letter-spacing: 1px;
+  h1 {
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 5px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
-  button.submit-btn:hover { background: linear-gradient(90deg, #45a049, #388E3C); box-shadow: 0 4px 15px rgba(76, 175, 80, 0.5); transform: translateY(-2px); }
   
-  #resultBox { display: none; margin-top: 30px; padding: 25px; border-radius: 12px; font-size: 18px; line-height: 1.6; background-color: #2c312e; border: 2px solid #4CAF50; text-align: center;}
-  .feedback { margin-top: 15px; padding: 12px; border-radius: 8px; font-size: 1em; display: none; }
+  .header-info {
+    text-align: center;
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  .status-badge {
+    display: inline-block;
+    background: #2c332f;
+    color: #81c784;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    margin-top: 8px;
+    border: 1px solid #3d4641;
+  }
+
+  select, button.submit-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+  
+  select {
+    background-color: #161917;
+    color: #fff;
+    border: 2px solid #4CAF50;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+    transition: 0.3s;
+  }
+  select:focus {
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.4);
+  }
+
+  .question-box {
+    margin-bottom: 22px;
+    padding: 22px;
+    border: 1px solid #323835;
+    border-radius: 12px;
+    background: #262b28;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.25s ease;
+  }
+  .question-box:hover {
+    border-color: #4CAF50;
+  }
+  /* Hiệu ứng khi câu hỏi đã được chọn đáp án */
+  .question-box.answered {
+    border-left: 5px solid #4CAF50;
+    background: #28302b;
+  }
+
+  .question-title {
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #66bb6a;
+    font-size: 1.12em;
+  }
+
+  .options label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    background: #303633;
+    border: 1px solid transparent;
+  }
+  .options label:hover {
+    background-color: #3a423e;
+    border-color: #66bb6a;
+    transform: translateX(4px);
+  }
+  
+  input[type="radio"] {
+    margin-right: 12px;
+    transform: scale(1.3);
+    accent-color: #4CAF50;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  button.submit-btn {
+    background: linear-gradient(90deg, #4CAF50, #388E3C);
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: all 0.3s ease;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+  }
+  button.submit-btn:hover {
+    background: linear-gradient(90deg, #45a049, #2e7d32);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
+    transform: translateY(-2px);
+  }
+  button.submit-btn:active {
+    transform: translateY(1px);
+  }
+
+  #resultBox {
+    display: none;
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 12px;
+    font-size: 18px;
+    line-height: 1.6;
+    background-color: #262b28;
+    border: 2px solid #4CAF50;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  }
+  
+  .feedback {
+    margin-top: 15px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 0.98em;
+    display: none;
+  }
 </style>
 </head>
 <body>
+
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
 <div class="container">
   <h1>ĐỀ CƯƠNG HOẠT ĐỘNG TRẢI NGHIỆM 7</h1>
-  <div class="header-info">Lớp 7A7 - Năm học 2026-2027<br><span style="font-size: 0.9em; font-weight: normal; color: #aaa;">(25 Câu Trắc nghiệm)</span></div>
-  
-  <!-- Nút Nhạc Chill -->
-  <div class="audio-controls">
-    <button id="musicBtn" onclick="toggleMusic()">▶️ Bật nhạc Chill để làm bài</button>
+  <div class="header-info">
+    Lớp 7A7 - Năm học 2026-2027<br>
+    <span class="status-badge" id="progressText">Đã làm: 0/25 câu</span>
   </div>
 
   <div class="question-box">
-    <label style="font-weight: bold; color: #fff; font-size: 1.1em;">Chọn tên của bạn:</label>
+    <label style="font-weight: bold; color: #fff; font-size: 1.1em;">👤 Chọn tên của bạn:</label>
     <select id="studentName" onchange="playClick()">
       <option value="">-- Bấm vào đây để chọn tên --</option>
     </select>
@@ -77,109 +213,122 @@
 </div>
 
 <script>
-  // CÀI ĐẶT ÂM THANH
-  const clickSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
-  clickSound.volume = 0.5; // Âm lượng tiếng click
-
-  const chillMusic = new Audio('https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3');
-  chillMusic.loop = true; // Lặp lại liên tục
-  chillMusic.volume = 0.2; // Nhạc nền nhỏ nhẹ để tập trung
+  // HỆ THỐNG ÂM THANH CLICK TRỰC TIẾP (Không cần mạng, siêu mượt, không bao giờ lỗi)
+  const AudioCtx = window.AudioContext || window.webkitAudioContext;
+  let audioCtx;
 
   function playClick() {
-    clickSound.currentTime = 0;
-    clickSound.play().catch(e => console.log("Trình duyệt chặn autoplay âm thanh."));
-  }
-
-  let isMusicPlaying = false;
-  function toggleMusic() {
-    playClick();
-    const btn = document.getElementById('musicBtn');
-    if (!isMusicPlaying) {
-      chillMusic.play();
-      btn.innerHTML = '⏸ Tắt nhạc Chill';
-      btn.style.backgroundColor = '#4CAF50';
-      btn.style.color = '#fff';
-      isMusicPlaying = true;
-    } else {
-      chillMusic.pause();
-      btn.innerHTML = '▶️ Bật nhạc Chill để làm bài';
-      btn.style.backgroundColor = '#2c312e';
-      btn.style.color = '#4CAF50';
-      isMusicPlaying = false;
+    try {
+      if (!audioCtx) audioCtx = new AudioCtx();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(650, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(150, audioCtx.currentTime + 0.04);
+      
+      gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.04);
+      
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.04);
+    } catch (e) {
+      // Bỏ qua nếu thiết bị tắt âm
     }
   }
 
-  // Danh sách 39 học sinh
+  // DANH SÁCH 39 HỌC SINH LỚP 7A7
   const danhsach7A7 = [
-    "1. Phạm Thị Vân Anh", "2. Phạm Hoài Bảo", "3. Trần Phạm Gia Bảo", "4. Nguyễn Ngọc Diễm", 
-    "5. Huỳnh Vũ Duy", "6. Võ Minh Duy", "7. Đỗ Lâm Hạnh Duyên", "8. Nguyễn Phan Khánh Duyên", 
-    "9. Nguyễn Minh Đăng", "10. Võ Nguyễn Ngọc Giàu", "11. Võ Thị Nhã Hân", "12. Võ Minh Hiếu", 
-    "13. Nguyễn Hoàng Kha", "14. Phan Hoàng Thái Lâm", "15. Nguyễn Hữu Bảo Long", "16. Huỳnh Duy Mạnh", 
-    "17. Lê Thị Cẩm Mi", "18. Nguyễn Lâm Hải Nam", "19. Phạm Hoàng Phương Nghi", "20. Nguyễn Phương Khánh Ngọc", 
-    "21. Nguyễn Trần Bảo Ngọc", "22. Trần Nguyễn Như Ngọc", "23. Lê Nhi", "24. Phạm Đỗ Huỳnh Như", 
-    "25. Võ Minh Nhựt", "26. Lê Văn Hoàng Phi", "27. Ngô Văn Tài", "28. Lê Thanh Tân", 
-    "29. Đỗ Huệ Thanh", "30. Phạm Huỳnh Thanh Thảo", "31. Nguyễn Trúc Thi", "32. Trần Hoàng Thiện", 
-    "33. Huỳnh Anh Thư", "34. Trần Trung Tín", "35. Nguyễn Thị Ngọc Trân", "36. Nguyễn Minh Triệu", 
+    "1. Phạm Thị Vân Anh", "2. Phạm Hoài Bảo", "3. Trần Phạm Gia Bảo", "4. Nguyễn Ngọc Diễm",
+    "5. Huỳnh Vũ Duy", "6. Võ Minh Duy", "7. Đỗ Lâm Hạnh Duyên", "8. Nguyễn Phan Khánh Duyên",
+    "9. Nguyễn Minh Đăng", "10. Võ Nguyễn Ngọc Giàu", "11. Võ Thị Nhã Hân", "12. Võ Minh Hiếu",
+    "13. Nguyễn Hoàng Kha", "14. Phan Hoàng Thái Lâm", "15. Nguyễn Hữu Bảo Long", "16. Huỳnh Duy Mạnh",
+    "17. Lê Thị Cẩm Mi", "18. Nguyễn Lâm Hải Nam", "19. Phạm Hoàng Phương Nghi", "20. Nguyễn Phương Khánh Ngọc",
+    "21. Nguyễn Trần Bảo Ngọc", "22. Trần Nguyễn Như Ngọc", "23. Lê Nhi", "24. Phạm Đỗ Huỳnh Như",
+    "25. Võ Minh Nhựt", "26. Lê Văn Hoàng Phi", "27. Ngô Văn Tài", "28. Lê Thanh Tân",
+    "29. Đỗ Huệ Thanh", "30. Phạm Huỳnh Thanh Thảo", "31. Nguyễn Trúc Thi", "32. Trần Hoàng Thiện",
+    "33. Huỳnh Anh Thư", "34. Trần Trung Tín", "35. Nguyễn Thị Ngọc Trân", "36. Nguyễn Minh Triệu",
     "37. Phạm Thanh Vũ", "38. Lê Trần Hoàng Vy", "39. Đặng Ngọc Như Ý"
   ];
 
   const select = document.getElementById('studentName');
   danhsach7A7.forEach(ten => {
     let opt = document.createElement('option');
-    opt.value = ten; opt.innerHTML = ten;
+    opt.value = ten;
+    opt.innerHTML = ten;
     select.appendChild(opt);
   });
 
-  // DANH SÁCH 25 CÂU HỎI (Bạn thay nội dung vào chỗ có dấu ngoặc vuông [...] nhé)
-  const trắcnghiệm = [
-    { q: "Câu 1. Bạn Hà trên lớp nhút nhát và rụt rè, em sẽ làm gì để giúp bạn tự tin hơn?", o: ["A. Chê bai, kể xấu bạn.", "B. Lôi kéo bạn khác cùng trêu.", "C. Tâm sự, gần gũi và rủ bạn tham gia các hoạt động chung.", "D. Mặc kệ bạn, ai có thân người nấy lo."], a: 2 }, // Đáp án C
-    { q: "Câu 2. Để luôn tự tin trong học tập, chúng ta cần làm gì?", o: ["A. Trên lớp tích cực quan sát, lắng nghe, học hỏi.", "B. Chép hết vào vở về nhà học thuộc.", "C. Mượn vở bài tập của bạn chép đầy đủ.", "D. Xin cô ngồi cạnh bạn học giỏi để nhìn bài."], a: 0 }, // Đáp án A
-    { q: "Câu 3. Khi em gặp chuyện buồn, em cần làm gì?", o: ["A. Giấu kín trong lòng không ai biết.", "B. Mạnh dạn chia sẻ nỗi buồn với bạn bè và người thân yêu.", "C. Chịu đựng một mình.", "D. Rủ bạn đi chơi game."], a: 1 }, // Đáp án B
-    { q: "Câu 4. Những việc làm nào phù hợp để phát triển bản thân?", o: ["A. Thường xuyên tập thể dục, ăn uống điều độ hợp lí.", "B. Thường xuyên lướt mạng xã hội tán gẫu.", "C. Ngủ nhiều, ăn uống tùy thích, ít vận động.", "D. Ăn kiêng, chủ yếu ăn rau và hạn chế thịt."], a: 0 }, // Đáp án A
-    { q: "Câu 5. Tính cách nào sẽ giúp bạn thuận lợi hơn trong cuộc sống?", o: ["A. Hay cáu gắt, to tiếng với người khác.", "B. Hòa đồng, vui vẻ thân thiện với mọi người.", "C. Ít nói, nhút nhát, thiếu tự tin.", "D. Kiêu ngạo, đắc thắng."], a: 1 }, // Đáp án B
-    { q: "Câu 6. Đi học về thấy em trai lục tung đồ của mình, em sẽ làm gì?", o: ["A. Tức giận, quát mắng em.", "B. Khóc toáng lên nhờ bố mẹ giải quyết.", "C. Nhẹ nhàng khuyên bảo em và cất đồ cẩn thận hơn.", "D. Lao vào lục tung đồ của em để trả thù."], a: 2 }, // Đáp án C
-    { q: "Câu 7. Nghe thấy bạn A trong lớp nói xấu mình, em sẽ giải quyết thế nào?", o: ["A. Gặp bạn A tâm sự để hai người hiểu nhau hơn.", "B. Xa lánh và không chơi với A nữa.", "C. Tìm điểm xấu của A để nói xấu lại.", "D. Nhờ anh lớn bắt nạt A cho bỏ tức."], a: 0 }, // Đáp án A
-    { q: "Câu 8. Gần thi, bạn bè lo lắng căng thẳng, em sẽ làm gì để giúp đỡ?", o: ["A. Cho bạn mượn sách học.", "B. Khuyên bạn đọc truyện cười.", "C. Chia sẻ kinh nghiệm học tập và rủ bạn vận động thể thao cho bớt căng thẳng.", "D. Rủ các bạn chơi đá bóng chiếm lĩnh kiến thức."], a: 2 }, // Đáp án C
-    { q: "Câu 9. Việc làm nào thể hiện mối quan hệ hòa đồng với thầy cô và bạn bè?", o: ["A. Xin ý kiến thầy cô về vấn đề liên quan học tập.", "B. Giúp đỡ những hoàn cảnh khó khăn cả trong và ngoài lớp.", "C. Chỉ chơi theo nhóm riêng của mình.", "D. Chỉ chia sẻ với những bạn chơi thân trong lớp."], a: 1 }, // Đáp án B
-    { q: "Câu 10. Nếu em chưa hiểu những điều cô giáo giảng, em nên làm gì?", o: ["A. Tự tìm hiểu lại.", "B. Không nói ra vì sợ các bạn chê cười.", "C. Nói với các bạn rằng cô dạy chán nên không hiểu.", "D. Hỏi lại để cô giải thích."], a: 3 }, // Đáp án D
-    { q: "Câu 11. Em đã rèn luyện tính kiên trì, chăm chỉ như thế nào?", o: ["A. Làm việc nhà khi bố mẹ nhờ.", "B. Chỉ làm việc nhẹ nhàng khi có thời gian.", "C. Việc khó không cần phải cố gắng.", "D. Luôn cố gắng, kiên trì hoàn thành mọi công việc được giao."], a: 3 }, // Đáp án D
-    { q: "Câu 12. Khi cả nhóm được giao một bài tập khó, em sẽ làm gì?", o: ["A. Thảo luận, lên kế hoạch và phân công nhiệm vụ rõ ràng.", "B. Không quan tâm, đùn đẩy để hoàn thành bài được giao.", "C. Làm sơ sài, qua loa cho xong phần việc của mình.", "D. Tự nghiên cứu tài liệu để hoàn thành, không cần trao đổi nhóm."], a: 0 }, // Đáp án A
-    { q: "Câu 13. Khi biết điểm yếu của một bạn trong lớp, em sẽ làm gì?", o: ["A. Chế giễu, đùa cợt điểm yếu của bạn.", "B. Sẽ cho bạn chép bài trong lần kiểm tra tiếp theo.", "C. Tìm và nhờ giao cho bạn việc liên quan đến điểm yếu này.", "D. Động viên, giúp đỡ bạn không tự ti và từng bước khắc phục."], a: 3 }, // Đáp án D
-    { q: "Câu 14. Một bạn vô tình làm hỏng hộp bút em yêu thích, em xử lí thế nào?", o: ["A. Bực tức ra mặt, quát to vào mặt bạn.", "B. Hỏi lí do và nhẹ nhàng nói cho bạn biết suy nghĩ của mình.", "C. Yêu cầu bạn lập tức đền hộp bút khác.", "D. Lên mạng xã hội nói kháy bạn đó."], a: 1 }, // Đáp án B
-    { q: "Câu 15. Em sẽ làm gì nếu được giao dự án học tập không đúng sở trường?", o: ["A. Xin cô giáo đổi chủ đề khác.", "B. Giả ốm để xin phép không làm dự án.", "C. Tìm cách đùn đẩy sang cho bạn khác trong nhóm.", "D. Có kế hoạch rõ ràng, chia sẻ và nhờ sự hỗ trợ của thầy cô, bạn bè."], a: 3 }, // Đáp án D
-    { q: "Câu 16. Làm thế nào để xác định được điểm mạnh, điểm hạn chế của bản thân?", o: ["A. Tích cực tham gia hoạt động để bộc lộ khả năng.", "B. Điểm mạnh, hạn chế là cố định, không cần xác định.", "C. Lắng nghe nhận xét, đánh giá của những người xung quanh.", "D. Kết hợp tự đánh giá bản thân và nhận xét từ người khác."], a: 3 }, // Đáp án D
-    { q: "Câu 17. Khi xuất hiện cảm xúc tiêu cực, em giải tỏa bằng cách nào?", o: ["A. Để cảm xúc tiêu cực bộc lộ một cách tự nhiên.", "B. Hít thở sâu hoặc đi dạo.", "C. Quát hoặc nói thật to với người đối diện.", "D. Đi xem phim hay chơi điện tử."], a: 1 }, // Đáp án B
-    { q: "Câu 18. Khi gặp khó khăn trong học tập, em đã làm gì?", o: ["A. Nhờ bố mẹ tìm cách khắc phục nguyên nhân.", "B. Cân nhắc xem có nên tiếp tục làm hay không.", "C. Tìm sự hỗ trợ từ thầy cô, bạn bè hoặc người thân.", "D. Bỏ qua khó khăn đó, tìm việc dễ hơn để làm."], a: 2 }, // Đáp án C
-    { q: "Câu 19. Biểu hiện nào sau đây là điểm mạnh trong học tập và cuộc sống?", o: ["A. Giao tiếp Tiếng Anh chưa tốt.", "B. Dễ nổi nóng, thiếu bình tĩnh.", "C. Không tự tin trước đám đông.", "D. Biết cách giải quyết vấn đề."], a: 3 }, // Đáp án D
-    { q: "Câu 20. Đâu là điểm hạn chế trong học tập và cuộc sống?", o: ["A. Ngại giao tiếp.", "B. Có kỹ năng thuyết trình.", "C. Thành thạo công nghệ thông tin.", "D. Có tính kỉ luật cao."], a: 0 }, // Đáp án A
-    { q: "Câu 21. Biểu hiện nào thể hiện CHƯA BIẾT kiểm soát bản thân?", o: ["A. Hay nổi nóng khi bị các bạn trêu chọc.", "B. Hít thở đều và tập trung vào hơi thở.", "C. Suy nghĩ về những điều tích cực.", "D. Không giữ những suy nghĩ và cảm xúc tiêu cực trong người."], a: 0 }, // Đáp án A
-    { q: "Câu 22. Em đã phát triển mối quan hệ hợp tác với bạn bằng cách nào?", o: ["A. Giữ khoảng cách nhất định, không làm phiền bạn.", "B. Tôn trọng, lắng nghe ý kiến của các bạn.", "C. Chia sẻ tâm sự với bố mẹ và người thân.", "D. Chỉ nói chuyện với bạn chơi thân trong lớp."], a: 1 }, // Đáp án B
-    { q: "Câu 23. Việc làm nào thể hiện để hợp tác với bạn bè?", o: ["A. Sẵn sàng giúp công việc của bạn khi có lí do chính đáng.", "B. Không cần cùng nhau bàn bạc, trao đổi ý kiến.", "C. Không hỗ trợ, giúp đỡ lẫn nhau.", "D. Việc ai nấy làm, không cần giúp đỡ ai khác."], a: 0 }, // Đáp án A
-    { q: "Câu 24. Biện pháp nào phù hợp để điều chỉnh thái độ cảm xúc?", o: ["A. Thường xuyên chơi điện thoại.", "B. Luôn bộc lộ cảm xúc thật dù là khi tức giận.", "C. Suy nghĩ tích cực, không phản ứng khi bản thân đang bực tức.", "D. Đi dạo khi tức giận."], a: 2 }, // Đáp án C
-    { q: "Câu 25. Khi gặp bài tập khó, em sẽ KHÔNG LÀM như thế nào?", o: ["A. Tự suy nghĩ tìm ra cách giải.", "B. Xem lại bài thầy cô đã chữa để tìm hướng giải.", "C. Đọc kĩ đề và phân tích đề theo nhiều hướng.", "D. Chép bài bạn."], a: 3 }  // Đáp án D
-  ];
+  // DANH SÁCH 25 CÂU HỎI TRẮC NGHIỆM (ĐÃ CÀI SẴN ĐÁP ÁN)
+  const tracnghiem = [
+    { q: "Câu 1. Bạn Hà trên lớp nhút nhát và rụt rè, em sẽ làm gì để giúp bạn tự tin hơn?", o: ["A. Chê bai, kể xấu bạn.", "B. Lôi kéo bạn khác cùng trêu.", "C. Tâm sự, gần gũi và rủ bạn tham gia các hoạt động chung.", "D. Mặc kệ bạn, ai có thân người nấy lo."], a: 2 },
+    { q: "Câu 2. Để luôn tự tin trong học tập, chúng ta cần làm gì?", o: ["A. Trên lớp tích cực quan sát, lắng nghe, học hỏi.", "B. Chép hết vào vở về nhà học thuộc.", "C. Mượn vở bài tập của bạn chép đầy đủ.", "D. Xin cô ngồi cạnh bạn học giỏi để nhìn bài."], a: 0 },
+    { q: "Câu 3. Khi em gặp chuyện buồn, em cần làm gì?", o: ["A. Giấu kín trong lòng không ai biết.", "B. Mạnh dạn chia sẻ nỗi buồn với bạn bè và người thân yêu.", "C. Chịu đựng một mình.", "D. Rủ bạn đi chơi game."], a: 1 },
+    { q: "Câu 4. Những việc làm nào phù hợp để phát triển bản thân?", o: ["A. Thường xuyên tập thể dục, ăn uống điều độ hợp lí.", "B. Thường xuyên lướt mạng xã hội tán gẫu.", "C. Ngủ nhiều, ăn uống tùy thích, ít vận động.", "D. Ăn kiêng, chủ yếu ăn rau và hạn chế thịt."], a: 0 },
+    { q: "Câu 5. Tính cách nào sẽ giúp bạn thuận lợi hơn trong cuộc sống?", o: ["A. Hay cáu gắt, to tiếng với người khác.", "B. Hòa đồng, vui vẻ thân thiện với mọi người.", "C. Ít nói, nhút nhát, thiếu tự tin.", "D. Kiêu ngạo, đắc thắng."], a: 1 },
+    { q: "Câu 6. Đi học về thấy em trai lục tung đồ của mình, em sẽ làm gì?", o: ["A. Tức giận, quát mắng em.", "B. Khóc toáng lên nhờ bố mẹ giải quyết.", "C. Nhẹ nhàng khuyên bảo em và cất đồ cẩn thận hơn.", "D. Lao vào lục tung đồ của em để trả thù."], a: 2 },
+    { q: "Câu 7. Nghe thấy bạn A trong lớp nói xấu mình, em sẽ giải quyết thế nào?", o: ["A. Gặp bạn A tâm sự để hai người hiểu nhau hơn.", "B. Xa lánh và không chơi với A nữa.", "C. Tìm điểm xấu của A để nói xấu lại.", "D. Nhờ anh lớn bắt nạt A cho bỏ tức."], a: 0 },
+    { q: "Câu 8. Gần thi, bạn bè lo lắng căng thẳng, em sẽ làm gì để giúp đỡ?", o: ["A. Cho bạn mượn sách học.", "B. Khuyên bạn đọc truyện cười.", "C. Chia sẻ kinh nghiệm học tập và rủ bạn vận động thể thao cho bớt căng thẳng.", "D. Rủ các bạn chơi đá bóng chiếm lĩnh kiến thức."], a: 2 },
+    { q: "Câu 9. Việc làm nào thể hiện mối quan hệ hòa đồng với thầy cô và bạn bè?", o: ["A. Xin ý kiến thầy cô về vấn đề liên quan học tập.", "B. Giúp đỡ những hoàn cảnh khó khăn cả trong và ngoài lớp.", "C. Chỉ chơi theo nhóm riêng của mình.", "D. Chỉ chia sẻ với những bạn chơi thân trong lớp."], a: 1 },
+    { q: "Câu 10. Nếu em chưa hiểu những điều cô giáo giảng, em nên làm gì?", o: ["A. Tự tìm hiểu lại.", "B. Không nói ra vì sợ các bạn chê cười.", "C. Nói với các bạn rằng cô dạy chán nên không hiểu.", "D. Hỏi lại để cô giải thích."], a: 3 },
+    { q: "Câu 11. Em đã rèn luyện tính kiên trì, chăm chỉ như thế nào?", o: ["A. Làm việc nhà khi bố mẹ nhờ.", "B. Chỉ làm việc nhẹ nhàng khi có thời gian.", "C. Việc khó không cần phải cố gắng.", "D. Luôn cố gắng, kiên trì hoàn thành mọi công việc được giao."], a: 3 },
+    { q: "Câu 12. Khi cả nhóm được giao một bài tập khó, em sẽ làm gì?", o: ["A. Thảo luận, lên kế hoạch và phân công nhiệm vụ rõ ràng.", "B. Không quan tâm, đùn đẩy để hoàn thành bài được giao.", "C. Làm sơ sài, qua loa cho xong phần việc của mình.", "D. Tự nghiên cứu tài liệu để hoàn thành, không cần trao đổi nhóm."], a: 0 },
+    { q: "Câu 13. Khi biết điểm yếu của một bạn trong lớp, em sẽ làm gì?", o: ["A. Chế giễu, đùa cợt điểm yếu của bạn.", "B. Sẽ cho bạn chép bài trong lần kiểm tra tiếp theo.", "C. Tìm và nhờ giao cho bạn việc liên quan đến điểm yếu này.", "D. Động viên, giúp đỡ bạn không tự ti và từng bước khắc phục."], a: 3 },
+    { q: "Câu 14. Một bạn vô tình làm hỏng hộp bút em yêu thích, em xử lí thế nào?", o: ["A. Bực tức ra mặt, quát to vào mặt bạn.", "B. Hỏi lí do và nhẹ nhàng nói cho bạn biết suy nghĩ của mình.", "C. Yêu cầu bạn lập tức đền hộp bút khác.", "D. Lên mạng xã hội nói kháy bạn đó."], a: 1 },
+    { q: "Câu 15. Em sẽ làm gì nếu được giao dự án học tập không đúng sở trường?", o: ["A. Xin cô giáo đổi chủ đề khác.", "B. Giả ốm để xin phép không làm dự án.", "C. Tìm cách đùn đẩy sang cho bạn khác trong nhóm.", "D. Có kế hoạch rõ ràng, chia sẻ và nhờ sự hỗ trợ của thầy cô, bạn bè."], a: 3 },
+    { q: "Câu 16. Làm thế nào để xác định được điểm mạnh, điểm hạn chế của bản thân?", o: ["A. Tích cực tham gia hoạt động để bộc lộ khả năng.", "B. Điểm mạnh, hạn chế là cố định, không cần xác định.", "C. Lắng nghe nhận xét, đánh giá của những người xung quanh.", "D. Kết hợp tự đánh giá bản thân và nhận xét từ người khác."], a: 3 },
+    { q: "Câu 17. Khi xuất hiện cảm xúc tiêu cực, em giải tỏa bằng cách nào?", o: ["A. Để cảm xúc tiêu cực bộc lộ một cách tự nhiên.", "B. Hít thở sâu hoặc đi dạo.", "C. Quát hoặc nói thật to với người đối diện.", "D. Đi xem phim hay chơi điện tử."], a: 1 },
+    { q: "Câu 18. Khi gặp khó khăn trong học tập, em đã làm gì?", o: ["A. Nhờ bố mẹ tìm cách khắc phục nguyên nhân.", "B. Cân nhắc xem có nên tiếp tục làm hay không.", "C. Tìm sự hỗ trợ từ thầy cô, bạn bè hoặc người thân.", "D. Bỏ qua khó khăn đó, tìm việc dễ hơn để làm."], a: 2 },
+    { q: "Câu 19. Biểu hiện nào sau đây là điểm mạnh trong học tập và cuộc sống?", o: ["A. Giao tiếp Tiếng Anh chưa tốt.", "B. Dễ nổi nóng, thiếu bình tĩnh.", "C. Không tự tin trước đám đông.", "D. Biết cách giải quyết vấn đề."], a: 3 },
+    { q: "Câu 20. Đâu là điểm hạn chế trong học tập và cuộc sống?", o: ["A. Ngại giao tiếp.", "B. Có kỹ năng thuyết trình.", "C. Thành thạo công nghệ thông tin.", "D. Có tính kỉ luật cao."], a: 0 },
+    { q: "Câu 21. Biểu hiện nào thể hiện CHƯA BIẾT kiểm soát bản thân?", o: ["A. Hay nổi nóng khi bị các bạn trêu chọc.", "B. Hít thở đều và tập trung vào hơi thở.", "C. Suy nghĩ về những điều tích cực.", "D. Không giữ những suy nghĩ và cảm xúc tiêu cực trong người."], a: 0 },
+    { q: "Câu 22. Em đã phát triển mối quan hệ hợp tác với bạn bằng cách nào?", o: ["A. Giữ khoảng cách nhất định, không làm phiền bạn.", "B. Tôn trọng, lắng nghe ý kiến của các bạn.", "C. Chia sẻ tâm sự với bố mẹ và người thân.", "D. Chỉ nói chuyện với bạn chơi thân trong lớp."], a: 1 },
+    { q: "Câu 23. Việc làm nào thể hiện để hợp tác với bạn bè?", o: ["A. Sẵn sàng giúp công việc của bạn khi có lí do chính đáng.", "B. Không cần cùng nhau bàn bạc, trao đổi ý kiến.", "C. Không hỗ trợ, giúp đỡ lẫn nhau.", "D. Việc ai nấy làm, không cần giúp đỡ ai khác."], a: 0 },
+    { q: "Câu 24. Biện pháp nào phù hợp để điều chỉnh thái độ cảm xúc?", o: ["A. Thường xuyên chơi điện thoại.", "B. Luôn bộc lộ cảm xúc thật dù là khi tức giận.", "C. Suy nghĩ tích cực, không phản ứng khi bản thân đang bực tức.", "D. Đi dạo khi tức giận."], a: 2 },
+    { q: "Câu 25. Khi gặp bài tập khó, em sẽ KHÔNG LÀM như thế nào?", o: ["A. Tự suy nghĩ tìm ra cách giải.", "B. Xem lại bài thầy cô đã chữa để tìm hướng giải.", "C. Đọc kĩ đề và phân tích đề theo nhiều hướng.", "D. Chép bài bạn."], a: 3 }
   ];
 
   const container = document.getElementById('quizContainer');
-  let html = ``;
-  
-  trắcnghiệm.forEach((item, index) => {
+  let html = '';
+
+  tracnghiem.forEach((item, index) => {
     html += `<div class="question-box" id="tn_box_${index}">
                <div class="question-title">${item.q}</div>
                <div class="options">`;
     item.o.forEach((opt, optIndex) => {
-      // Khi bấm vào đáp án sẽ gọi hàm playClick() phát tiếng
-      html += `<label><input type="radio" name="tn_${index}" value="${optIndex}" onclick="playClick()"> ${opt}</label>`;
+      html += `<label><input type="radio" name="tn_${index}" value="${optIndex}" onclick="chonDapAn(${index})"> <span>${opt}</span></label>`;
     });
     html += `</div><div id="tn_fb_${index}" class="feedback"></div></div>`;
   });
 
   container.innerHTML = html;
 
+  function chonDapAn(index) {
+    playClick();
+    // Đánh dấu khung câu hỏi đã làm
+    document.getElementById(`tn_box_${index}`).classList.add('answered');
+    
+    // Cập nhật thanh tiến độ
+    let daLam = 0;
+    for (let i = 0; i < tracnghiem.length; i++) {
+      if (document.querySelector(`input[name="tn_${i}"]:checked`)) {
+        daLam++;
+      }
+    }
+    const percent = (daLam / tracnghiem.length) * 100;
+    document.getElementById('progressBar').style.width = percent + '%';
+    document.getElementById('progressText').innerText = `Đã làm: ${daLam}/${tracnghiem.length} câu`;
+  }
+
   function nopBai() {
-    playClick(); // Tiếng click khi bấm nút Nộp
+    playClick();
     const ten = document.getElementById('studentName').value;
-    if(!ten) {
+    if (!ten) {
       alert("⚠️ Vui lòng chọn tên của bạn ở đầu trang trước khi nộp bài!");
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
@@ -188,45 +337,48 @@
     let diemTN = 0;
     let chualam = 0;
 
-    trắcnghiệm.forEach((item, index) => {
+    tracnghiem.forEach((item, index) => {
       const selected = document.querySelector(`input[name="tn_${index}"]:checked`);
       const fb = document.getElementById(`tn_fb_${index}`);
-      fb.style.display = 'block'; // Hiện kết quả giải thích
-      
-      if(!selected) {
-          chualam++;
-          fb.innerHTML = `⚠️ Bạn chưa làm câu này! Đáp án đúng là: <b>${item.o[item.a]}</b>`;
-          fb.style.backgroundColor = '#4a3b10'; fb.style.color = '#ffd54f';
-      }
-      else if(parseInt(selected.value) === item.a) {
+      fb.style.display = 'block';
+
+      if (!selected) {
+        chualam++;
+        fb.innerHTML = `⚠️ Bạn chưa làm câu này! Đáp án đúng là: <b>${item.o[item.a]}</b>`;
+        fb.style.backgroundColor = '#4a3b10';
+        fb.style.color = '#ffd54f';
+      } else if (parseInt(selected.value) === item.a) {
         diemTN += 0.4;
-        fb.innerHTML = `✔️ Chính xác! Đáp án đúng: ${item.o[item.a]}`;
-        fb.style.backgroundColor = '#1e3823'; fb.style.color = '#81c784';
+        fb.innerHTML = `✔️ Chính xác! Đáp án đúng: <b>${item.o[item.a]}</b>`;
+        fb.style.backgroundColor = '#1e3823';
+        fb.style.color = '#81c784';
       } else {
         fb.innerHTML = `❌ Sai rồi! Đáp án đúng là: <b>${item.o[item.a]}</b>`;
-        fb.style.backgroundColor = '#451c1c'; fb.style.color = '#e57373';
+        fb.style.backgroundColor = '#451c1c';
+        fb.style.color = '#e57373';
       }
     });
 
     let tongDiem = diemTN.toFixed(1);
-    let rank = tongDiem >= 8 ? "🎉 Tuyệt vời! Bạn học rất chắc kiến thức!" : (tongDiem >= 5 ? "👍 Khá tốt, cố gắng ôn thêm một chút nhé!" : "📚 Cần ôn tập kĩ hơn nha!");
+    let rank = tongDiem >= 8 ? "🎉 Tuyệt vời! Bạn nắm kiến thức rất chắc!" : (tongDiem >= 5 ? "👍 Khá tốt, cố gắng ôn thêm những câu sai nhé!" : "📚 Cần ôn tập kĩ hơn nha!");
 
     const res = document.getElementById('resultBox');
     res.style.display = 'block';
-    if(tongDiem >= 5) { res.style.borderColor = '#4CAF50'; res.style.color = '#e0e0e0'; }
-    else { res.style.borderColor = '#e57373'; res.style.color = '#e0e0e0'; }
+    res.style.borderColor = tongDiem >= 5 ? '#4CAF50' : '#e57373';
 
-    let msg = `<h2 style="color: #fff;">KẾT QUẢ BÀI LÀM</h2>
-               <b style="font-size: 1.2em;">👤 Học sinh: <span style="color:#4CAF50">${ten}</span></b> <br>
-               <h1 style="margin: 15px 0; color: #4CAF50; font-size: 3em;">${tongDiem}<span style="font-size: 0.5em; color: #aaa;">/10</span></h1>
+    let msg = `<h2 style="color: #fff; margin-top: 0;">KẾT QUẢ BÀI LÀM</h2>
+               <b style="font-size: 1.2em;">👤 Học sinh: <span style="color:#4CAF50">${ten}</span></b><br>
+               <h1 style="margin: 15px 0; color: #4CAF50; font-size: 3.2em;">${tongDiem}<span style="font-size: 0.45em; color: #aaa;">/10 điểm</span></h1>
                <p style="font-size: 1.1em; font-weight: bold;">${rank}</p>`;
-    if(chualam > 0) {
-        msg += `<p style="color:#ffd54f"><i>Lưu ý: Bạn đã bỏ trống ${chualam} câu không chọn đáp án.</i></p>`;
+               
+    if (chualam > 0) {
+      msg += `<p style="color:#ffd54f"><i>Lưu ý: Bạn đã bỏ trống ${chualam} câu chưa chọn đáp án.</i></p>`;
     }
-    res.innerHTML = msg;
     
-    // Tự động cuộn xuống phần xem điểm
-    res.scrollIntoView({behavior: "smooth"});
+    msg += `<button onclick="location.reload()" style="background:#3a423e; color:#fff; border:1px solid #4CAF50; padding:10px 25px; border-radius:8px; cursor:pointer; font-weight:bold; margin-top:10px;">🔄 Làm lại đề</button>`;
+
+    res.innerHTML = msg;
+    res.scrollIntoView({ behavior: "smooth" });
   }
 </script>
 </body>
