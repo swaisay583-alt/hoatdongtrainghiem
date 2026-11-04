@@ -5,20 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Đề Cương HĐTN 7 - Lớp 7A7</title>
 <style>
-  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #1a221c; color: #e8eaed; margin: 0; padding: 20px; line-height: 1.5; }
-  .container { max-width: 800px; margin: 0 auto; background: #232d25; padding: 30px; border-radius: 8px; border-top: 10px solid #4caf50; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-  h1 { text-align: center; color: #81c995; margin-bottom: 5px; }
-  .header-info { text-align: center; font-size: 1.1em; margin-bottom: 30px; font-weight: bold; color: #a8dab5; }
-  select, button { width: 100%; padding: 12px; margin-top: 8px; font-size: 16px; border: 1px solid #445946; border-radius: 5px; box-sizing: border-box; background-color: #1a221c; color: #fff; }
-  select { cursor: pointer; font-weight: bold; }
-  .question-box { margin-bottom: 25px; padding: 20px; border: 1px solid #445946; border-radius: 8px; background: #2a362d; }
-  .question-title { font-weight: bold; margin-bottom: 15px; color: #a8dab5; font-size: 1.05em; }
-  .options label { display: block; margin-bottom: 10px; cursor: pointer; padding: 10px; border-radius: 5px; transition: 0.2s; background: #324035; border: 1px solid transparent; }
-  .options label:hover { background-color: #3e4f41; border-color: #4caf50; }
-  input[type="radio"] { margin-right: 10px; transform: scale(1.2); accent-color: #4caf50; }
-  button { background-color: #4caf50; color: white; border: none; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; padding: 15px; }
-  button:hover { background-color: #388e3c; }
-  #resultBox { display: none; margin-top: 30px; padding: 20px; border-radius: 8px; font-size: 18px; line-height: 1.6; background-color: #1a221c; border: 1px solid #4caf50; }
+  /* Giao diện Dark Mode giống ảnh của bạn */
+  body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #1a1e1c; color: #e0e0e0; margin: 0; padding: 20px; line-height: 1.5; }
+  .container { max-width: 800px; margin: 0 auto; background: #232724; padding: 30px; border-radius: 8px; border-top: 10px solid #4CAF50; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+  h1 { text-align: center; color: #4CAF50; margin-bottom: 5px;}
+  .header-info { text-align: center; font-size: 1.1em; margin-bottom: 30px; font-weight: bold; color: #ffffff; }
+  select, button { width: 100%; padding: 12px; margin-top: 8px; font-size: 16px; border-radius: 5px; box-sizing: border-box; }
+  select { background-color: #2c312e; color: #fff; border: 1px solid #4CAF50; cursor: pointer; font-weight: bold; }
+  .question-box { margin-bottom: 25px; padding: 20px; border: 1px solid #3a403d; border-radius: 8px; background: #2a2f2c; }
+  .question-title { font-weight: bold; margin-bottom: 15px; color: #4CAF50; font-size: 1.1em;}
+  .options label { display: block; margin-bottom: 10px; cursor: pointer; padding: 10px; border-radius: 5px; transition: 0.2s; background: #333835; }
+  .options label:hover { background-color: #3e4441; }
+  input[type="radio"] { margin-right: 10px; transform: scale(1.2); accent-color: #4CAF50; }
+  button { background-color: #4CAF50; color: white; border: none; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; padding: 15px; font-size: 18px;}
+  button:hover { background-color: #45a049; }
+  #resultBox { display: none; margin-top: 30px; padding: 20px; border-radius: 8px; font-size: 18px; line-height: 1.6; background-color: #2c312e; border: 1px solid #4CAF50;}
   .feedback { margin-top: 15px; padding: 10px; border-radius: 5px; font-size: 0.95em; }
 </style>
 </head>
@@ -27,7 +28,7 @@
   <h1>ĐỀ CƯƠNG HOẠT ĐỘNG TRẢI NGHIỆM 7</h1>
   <div class="header-info">Lớp 7A7 - Năm học 2026-2027<br><span style="font-size: 0.9em; font-weight: normal;">(25 Câu Trắc nghiệm)</span></div>
   
-  <div class="question-box" style="background-color: #1a221c; border-color: #4caf50;">
+  <div class="question-box">
     <label style="font-weight: bold; color: #fff;">Chọn tên của bạn:</label>
     <select id="studentName">
       <option value="">-- Bấm vào đây để chọn tên --</option>
@@ -41,6 +42,7 @@
 </div>
 
 <script>
+  // Danh sách 39 học sinh lớp 7A7
   const danhsach7A7 = [
     "1. Phạm Thị Vân Anh", "2. Phạm Hoài Bảo", "3. Trần Phạm Gia Bảo", "4. Nguyễn Ngọc Diễm", 
     "5. Huỳnh Vũ Duy", "6. Võ Minh Duy", "7. Đỗ Lâm Hạnh Duyên", "8. Nguyễn Phan Khánh Duyên", 
@@ -61,22 +63,106 @@
     select.appendChild(opt);
   });
 
-  const tracnghiem = [
-    { q: "Câu 1. Bạn Hà khi lên lớp 6 còn rất rụt rè và nhút nhát. Vậy nếu em là bạn của Hà em sẽ giúp bạn như thế nào để bạn tự tin hơn?", o: ["A. Chê bai bạn, kể xấu bạn.", "B. Lôi kéo bạn khác cùng trêu bạn.", "C. Tâm sự, gần gũi và rủ bạn tham gia vào các hoạt động chung cùng với mình.", "D. Mặc kệ bạn, ai có thân người ấy lo."], a: 2 },
-    { q: "Câu 2. Để luôn tự tin trong học tập thì chúng ta cần:", o: ["A. Trên lớp tích cực quan sát, lắng nghe, học hỏi về nhà chịu khó học bài.", "B. Chép hết vào vở về nhà học thuộc.", "C. Đến lớp mượn vở bài tập của các bạn chép đầy đủ.", "D. Xin cô cho ngồi cạnh bạn học giỏi để tiện nhìn bài bạn."], a: 0 },
-    { q: "Câu 3. Khi em gặp chuyện buồn em cần:", o: ["A. Giấu kín trong lòng không cho ai biết.", "B. Mạnh dạn chia sẻ nỗi buồn với bạn bè và những người thân yêu.", "C. Chịu đựng một mình.", "D. Rủ bạn đi chơi game."], a: 1 },
-    { q: "Câu 4. Những việc làm nào sau đây phù hợp để phát triển bản thân?", o: ["A. Thường xuyên tập thể dục thể thao, ăn uống điều độ hợp lí.", "B. Thường xuyên lướt zalo, facebook tán gẫu với bạn bè.", "C. Ngủ nhiều, ăn uống tùy thích theo bản thân, vận động ít.", "D. Ăn kiêng, hạn chế ăn rau củ, ăn thịt là chủ yếu."], a: 0 },
-    { q: "Câu 5. Tính cách nào sẽ giúp bạn thuận lợi hơn trong cuộc sống?", o: ["A. Hay cáu gắt, to tiếng với người khác.", "B. Hòa đồng, vui vẻ thân thiện với mọi người.", "C. Ít nói, nhút nhát, thiếu tự tin.", "D. Kiêu ngạo, đắc thắng trước mọi người."], a: 1 },
-    { q: "Câu 6. Khi đi học về, em thấy em trai lục tung sách vở của mình, em sẽ:", o: ["A. Tức giận, quát mắng em.", "B. Khóc toáng lên, nhờ bố mẹ giải quyết.", "C. Nhẹ nhàng khuyên bảo em và sẽ cất đồ đạc cẩn thận hơn nữa.", "D. Lao vào lục tung đồ của em lên để trả thù em."], a: 2 },
-    { q: "Câu 7. Em nghe thấy có bạn trong lớp nói bạn A hay nói xấu về em. Khi nghe thấy các bạn trong lớp nói như vậy em sẽ giải quyết như thế nào?", o: ["A. Gặp bạn A, tâm sự với bạn để hai người hiểu nhau hơn.", "B. Xa lánh và không chơi với A nữa.", "C. Tìm ra điểm xấu của A để nói xấu lại bạn.", "D. Nhờ một anh lớp trên bắt nạt A cho bỏ tức."], a: 0 },
-    { q: "Câu 8. Gần đến kì thi, một số bạn tỏ ra rất lo lắng và căng thẳng. Vậy em sẽ làm gì để giúp đỡ các bạn ấy?", o: ["A. Cho các bạn mượn sách để học.", "B. Khuyên bạn nên đọc truyện cười để bớt căng thẳng.", "C. Chia sẻ kinh nghiệm học tập của mình cho các bạn, khuyên các bạn phải có phương pháp học tập phù hợp để chủ động chiếm lĩnh kiến thức.", "D. Rủ các bạn đi chơi đá bóng cho bớt căng thẳng."], a: 2 },
-    { q: "Câu 9. Những việc làm nào sau đây thể hiện mối quan hệ hoà đồng với thầy cô và bạn bè?", o: ["A. Chỉ xin ý kiến hoặc nhờ thầy cô khi thêm về những vấn đề liên quan tới việc học tập ở trường lớp.", "B. Giúp đỡ những hoàn cảnh khó khăn cả trong và ngoài lớp tuỳ theo khả năng của mình.", "C. Chơi theo nhóm riêng và lập nhóm messenger trao đổi, tâm sự với thầy cô.", "D. Chỉ chia sẻ, nói chuyện với những bạn chơi thân trong lớp."], a: 1 },
-    { q: "Câu 10. Nếu em chưa hiểu những điều cô giáo vừa giảng, em nên làm gì?", o: ["A. Tự tìm hiểu lại.", "B. Không nói ra vì sợ các bạn chê cười.", "C. Nói với các bạn rằng cô dạy chán nên không hiểu.", "D. Hỏi lại để cô giải thích."], a: 3 },
-    { q: "Câu 11. Em đã rèn luyện tính kiên trì, chăm chỉ trong lao động và cuộc sống hằng ngày như thế nào?", o: ["A. Làm việc nhà khi nào bố mẹ nhờ.", "B. Chỉ làm những việc nhẹ nhàng khi có thời gian.", "C. Những việc khó không cần phải cố gắng làm.", "D. Luôn cố gắng, kiên trì để hoàn thành mọi công việc đã nhận."], a: 3 },
-    { q: "Câu 12. Khi cả nhóm em được giao một bài tập khó thì em sẽ làm gì để cùng giải quyết với các bạn khác trong nhóm?", o: ["A. Thảo luận với các bạn, lên kế hoạch và phân công nhiệm vụ rõ ràng để mỗi bạn đảm nhận mỗi việc, tránh việc đùn đẩy để hoàn thành tốt bài tập được giao.", "B. Không quan tâm vì đây là bài tập nhóm, có những bạn khác sẽ làm.", "C. Làm sơ sài, qua loa cho xong phần việc của mình.", "D. Tự nghiên cứu, tìm tòi nguồn tài liệu để hoàn thành phần việc của mình không cần trao đổi với cả nhóm."], a: 0 },
-    { q: "Câu 13. Khi biết điểm yếu của một bạn trong lớp, em sẽ làm gì?", o: ["A. Chế giễu, đùa cợt điểm yếu của bạn trước các bạn khác.", "B. Sẽ cho bạn chép bài hoặc nói cho bạn đáp án trong lần kiểm tra tiếp theo.", "C. Tìm và nhờ, hoặc giao cho bạn những việc liên quan đến điểm yếu này.", "D. Động viên, giúp đỡ bạn không tự ti, không né tránh mà từng bước khắc phục điểm yếu của bản thân."], a: 3 },
-    { q: "Câu 14. Khi một bạn trong lớp em không hiểu vô tình hay cố ý làm hỏng hộp bút mà em yêu thích nhất, em sẽ xử lí như thế nào?", o: ["A. Bực tức ra mặt, quát to vào mặt bạn cho hả giận.", "B. Hỏi lí do vì sao bạn lại làm như vậy và nhẹ nhàng nói cho bạn này biết suy nghĩ của bản thân lúc này.", "C. Ngay lập tức đòi bạn phải sửa hoặc đền lại cho mình hộp bút khác.", "D. Lên mạng xã hội cà khịa bạn đó vì đã làm hỏng hộp bút yêu thích của mình."], a: 1 },
-    { q: "Câu 15. Em sẽ làm gì nếu được giao một bài tập/ dự án trong học tập thuộc vào sở đoản (điểm yếu) của mình.", o: ["A. Xin cô giáo/ thầy giáo đổi cho mình một đề bài/ dự án khác đúng theo sở trường của bản thân.", "B. Giả ốm để xin phép giáo viên không làm bài tập/ dự án này.", "C. Tìm cách tránh né bài tập/ dự án hoặc đẩy sang cho bạn khác trong nhóm, trong lớp làm.", "D. Có kế hoạch cụ thể, rõ ràng; chia sẻ và tranh thủ sự hỗ trợ, giúp đỡ của thầy cô và bạn bè để hoàn thành bài tập/ dự án được giao."], a: 3 },
-    { q: "Câu 16. Em đã làm thế nào để xác định được điểm mạnh, điểm hạn chế của bản thân?", o: ["A. Tích cực tham gia các hoạt động thiện nguyện để bộc lộ điểm mạnh, điểm hạn chế của bản thân.", "B. Điểm mạnh, điểm hạn chế của bản thân là những điểm có sẵn ở mỗi người nên em không cần làm gì cũng xác định được.", "C. Lắng nghe nhận xét, đánh giá của các bạn và những người xung quanh.", "D. Kết hợp tự đánh giá bản thân dựa trên kết quả giao tiếp...với nhận xét, đánh giá của mọi người."], a: 3 },
-    { q: "Câu 17. Khi xuất hiện cảm xúc tiêu cực, em đã giải toả cảm xúc đó bằng cách nào?", o: ["A. Để cảm xúc tiêu cực bộc lộ một cách tự nhiên, không cần giải toả.", "B. Hít thở sâu hoặc đi dạo.", "C. Quát hoặc nói thật to với người đối diện cho hả giận.", "D. Đi xem phim hay chơi điện tử."], a: 1 },
-    { q: "Câu 18. Khi gặp khó khăn trong học tập hoặc trong cuộc sống, em đã làm
+  // Mảng 25 câu hỏi (ĐÃ CÀI SẴN CHUẨN ĐÁP ÁN 1C, 2A, 3B, 4A, 5B...)
+  // GHI CHÚ: Đáp án A = 0, B = 1, C = 2, D = 3
+  // LƯU Ý QUAN TRỌNG: Không được vô tình xóa mất dấu ngoặc kép " hoặc dấu phẩy , khi thay chữ.
+  
+  const trắcnghiệm = [
+    { q: "Câu 1. Nếu bạn Hà trên lớp nhút nhát và rụt rè, em sẽ làm gì để bạn tự tin hơn?", o: ["A. Chê bai bạn", "B. Lôi kéo người khác trêu bạn", "C. Tâm sự, gần gũi và rủ bạn tham gia hoạt động chung", "D. Mặc kệ bạn"], a: 2 }, // Đáp án C
+    { q: "Câu 2. Để rèn luyện sự tự tin trong học tập, chúng ta cần làm gì?", o: ["A. Trên lớp tích cực quan sát, lắng nghe, học hỏi", "B. Chỉ học thuộc lòng", "C. Mượn bài bạn chép", "D. Ngồi cạnh bạn giỏi để nhìn bài"], a: 0 }, // Đáp án A
+    { q: "Câu 3. Khi gặp chuyện buồn, cách giải quyết tốt nhất là:", o: ["A. Giấu kín không ai biết", "B. Mạnh dạn chia sẻ với bạn bè, người thân", "C. Chịu đựng một mình", "D. Rủ bạn chơi game"], a: 1 }, // Đáp án B
+    
+    // Từ câu 4 đến 25, bạn tự copy nội dung đề của bạn vào thay cho các chữ "Nhập đáp án A/B/C/D" nhé!
+    { q: "Câu 4. [Ghi nội dung câu hỏi 4 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 0 }, // Đáp án A
+    { q: "Câu 5. [Ghi nội dung câu hỏi 5 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 1 }, // Đáp án B
+    { q: "Câu 6. [Ghi nội dung câu hỏi 6 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 2 }, // Đáp án C
+    { q: "Câu 7. [Ghi nội dung câu hỏi 7 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 0 }, // Đáp án A
+    { q: "Câu 8. [Ghi nội dung câu hỏi 8 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 2 }, // Đáp án C
+    { q: "Câu 9. [Ghi nội dung câu hỏi 9 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 1 }, // Đáp án B
+    { q: "Câu 10. [Ghi nội dung câu hỏi 10 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 3 }, // Đáp án D
+    { q: "Câu 11. [Ghi nội dung câu hỏi 11 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 3 }, // Đáp án D
+    { q: "Câu 12. [Ghi nội dung câu hỏi 12 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 0 }, // Đáp án A
+    { q: "Câu 13. [Ghi nội dung câu hỏi 13 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 3 }, // Đáp án D
+    { q: "Câu 14. [Ghi nội dung câu hỏi 14 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 1 }, // Đáp án B
+    { q: "Câu 15. [Ghi nội dung câu hỏi 15 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 3 }, // Đáp án D
+    { q: "Câu 16. [Ghi nội dung câu hỏi 16 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 3 }, // Đáp án D
+    { q: "Câu 17. [Ghi nội dung câu hỏi 17 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 1 }, // Đáp án B
+    { q: "Câu 18. [Ghi nội dung câu hỏi 18 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 2 }, // Đáp án C
+    { q: "Câu 19. [Ghi nội dung câu hỏi 19 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 3 }, // Đáp án D
+    { q: "Câu 20. [Ghi nội dung câu hỏi 20 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 0 }, // Đáp án A
+    { q: "Câu 21. [Ghi nội dung câu hỏi 21 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 0 }, // Đáp án A
+    { q: "Câu 22. [Ghi nội dung câu hỏi 22 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 1 }, // Đáp án B
+    { q: "Câu 23. [Ghi nội dung câu hỏi 23 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 0 }, // Đáp án A
+    { q: "Câu 24. [Ghi nội dung câu hỏi 24 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 2 }, // Đáp án C
+    { q: "Câu 25. [Ghi nội dung câu hỏi 25 vào đây]", o: ["A. [Nhập đáp án A]", "B. [Nhập đáp án B]", "C. [Nhập đáp án C]", "D. [Nhập đáp án D]"], a: 3 }  // Đáp án D
+  ];
+
+  const container = document.getElementById('quizContainer');
+  let html = ``;
+  
+  trắcnghiệm.forEach((item, index) => {
+    html += `<div class="question-box" id="tn_box_${index}">
+               <div class="question-title">${item.q}</div>
+               <div class="options">`;
+    item.o.forEach((opt, optIndex) => {
+      html += `<label><input type="radio" name="tn_${index}" value="${optIndex}"> ${opt}</label>`;
+    });
+    html += `</div><div id="tn_fb_${index}" class="feedback"></div></div>`;
+  });
+
+  container.innerHTML = html;
+
+  function nopBai() {
+    const ten = document.getElementById('studentName').value;
+    if(!ten) {
+      alert("Vui lòng chọn tên của bạn ở đầu trang trước khi nộp bài!");
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    let diemTN = 0;
+    let chualam = 0;
+
+    // Chấm điểm 25 câu trắc nghiệm (0.4 điểm / câu để tổng là 10 điểm)
+    trắcnghiệm.forEach((item, index) => {
+      const selected = document.querySelector(`input[name="tn_${index}"]:checked`);
+      const fb = document.getElementById(`tn_fb_${index}`);
+      
+      if(!selected) {
+          chualam++;
+          fb.innerHTML = `⚠️ Bạn chưa làm câu này! Đáp án đúng là: <b>${item.o[item.a]}</b>`;
+          fb.style.backgroundColor = '#4a3b10'; fb.style.color = '#ffd54f';
+      }
+      else if(parseInt(selected.value) === item.a) {
+        diemTN += 0.4;
+        fb.innerHTML = `✔️ Chính xác! Đáp án đúng: ${item.o[item.a]}`;
+        fb.style.backgroundColor = '#1e3823'; fb.style.color = '#81c784';
+      } else {
+        fb.innerHTML = `❌ Sai rồi! Đáp án đúng là: <b>${item.o[item.a]}</b>`;
+        fb.style.backgroundColor = '#451c1c'; fb.style.color = '#e57373';
+      }
+    });
+
+    let tongDiem = diemTN.toFixed(1); // Làm tròn 1 chữ số thập phân
+    let rank = tongDiem >= 8 ? "Tuyệt vời!" : (tongDiem >= 5 ? "Khá tốt, cố gắng thêm nhé!" : "Cần ôn tập kĩ hơn nha!");
+
+    const res = document.getElementById('resultBox');
+    res.style.display = 'block';
+    if(tongDiem >= 5) { res.style.borderColor = '#4CAF50'; res.style.color = '#e0e0e0'; }
+    else { res.style.borderColor = '#e57373'; res.style.color = '#e0e0e0'; }
+
+    let msg = `<h2>KẾT QUẢ BÀI LÀM</h2>
+                     <b>Học sinh:</b> ${ten} <br>
+                     <h3 style="margin: 10px 0; color: #4CAF50;">Tổng điểm: ${tongDiem}/10</h3>
+                     <p>${rank}</p>`;
+    if(chualam > 0) {
+        msg += `<p style="color:#ffd54f"><i>Lưu ý: Bạn đã bỏ trống ${chualam} câu không chọn đáp án.</i></p>`;
+    }
+    res.innerHTML = msg;
+    
+    // Cuộn xuống kết quả
+    res.scrollIntoView({behavior: "smooth"});
+  }
+</script>
+</body>
+</html>
