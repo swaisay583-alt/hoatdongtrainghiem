@@ -5,30 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Đề Cương HĐTN 7 - Lớp 7A7</title>
 <style>
-  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #e8f5e9; color: #202124; margin: 0; padding: 20px; line-height: 1.5; }
-  .container { max-width: 750px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; border-top: 10px solid #4caf50; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-  h1 { text-align: center; color: #2e7d32; }
-  .header-info { text-align: center; font-size: 1.1em; margin-bottom: 30px; font-weight: bold; }
-  select, button { width: 100%; padding: 12px; margin-top: 8px; font-size: 16px; border: 1px solid #dadce0; border-radius: 5px; box-sizing: border-box; }
-  select { background-color: #f8f9fa; cursor: pointer; font-weight: bold; }
-  .question-box { margin-bottom: 25px; padding: 20px; border: 1px solid #dadce0; border-radius: 8px; background: #fff; }
-  .question-title { font-weight: bold; margin-bottom: 15px; }
-  .options label { display: block; margin-bottom: 10px; cursor: pointer; padding: 8px; border-radius: 5px; transition: 0.2s; }
-  .options label:hover { background-color: #f1f3f4; }
-  input[type="radio"] { margin-right: 10px; transform: scale(1.2); }
-  button { background-color: #4caf50; color: white; border: none; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #1a221c; color: #e8eaed; margin: 0; padding: 20px; line-height: 1.5; }
+  .container { max-width: 800px; margin: 0 auto; background: #232d25; padding: 30px; border-radius: 8px; border-top: 10px solid #4caf50; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+  h1 { text-align: center; color: #81c995; margin-bottom: 5px; }
+  .header-info { text-align: center; font-size: 1.1em; margin-bottom: 30px; font-weight: bold; color: #a8dab5; }
+  select, button { width: 100%; padding: 12px; margin-top: 8px; font-size: 16px; border: 1px solid #445946; border-radius: 5px; box-sizing: border-box; background-color: #1a221c; color: #fff; }
+  select { cursor: pointer; font-weight: bold; }
+  .question-box { margin-bottom: 25px; padding: 20px; border: 1px solid #445946; border-radius: 8px; background: #2a362d; }
+  .question-title { font-weight: bold; margin-bottom: 15px; color: #a8dab5; font-size: 1.05em; }
+  .options label { display: block; margin-bottom: 10px; cursor: pointer; padding: 10px; border-radius: 5px; transition: 0.2s; background: #324035; border: 1px solid transparent; }
+  .options label:hover { background-color: #3e4f41; border-color: #4caf50; }
+  input[type="radio"] { margin-right: 10px; transform: scale(1.2); accent-color: #4caf50; }
+  button { background-color: #4caf50; color: white; border: none; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; padding: 15px; }
   button:hover { background-color: #388e3c; }
-  #resultBox { display: none; margin-top: 30px; padding: 20px; border-radius: 8px; font-size: 18px; line-height: 1.6; }
+  #resultBox { display: none; margin-top: 30px; padding: 20px; border-radius: 8px; font-size: 18px; line-height: 1.6; background-color: #1a221c; border: 1px solid #4caf50; }
   .feedback { margin-top: 15px; padding: 10px; border-radius: 5px; font-size: 0.95em; }
 </style>
 </head>
 <body>
 <div class="container">
   <h1>ĐỀ CƯƠNG HOẠT ĐỘNG TRẢI NGHIỆM 7</h1>
-  <div class="header-info">Lớp 7A7 - Năm học 2026-2027<br>(25 Câu Trắc nghiệm)</div>
+  <div class="header-info">Lớp 7A7 - Năm học 2026-2027<br><span style="font-size: 0.9em; font-weight: normal;">(25 Câu Trắc nghiệm)</span></div>
   
-  <div class="question-box">
-    <label style="font-weight: bold;">Chọn tên của bạn:</label>
+  <div class="question-box" style="background-color: #1a221c; border-color: #4caf50;">
+    <label style="font-weight: bold; color: #fff;">Chọn tên của bạn:</label>
     <select id="studentName">
       <option value="">-- Bấm vào đây để chọn tên --</option>
     </select>
@@ -41,7 +41,6 @@
 </div>
 
 <script>
-  // Danh sách học sinh lớp 7A7
   const danhsach7A7 = [
     "1. Phạm Thị Vân Anh", "2. Phạm Hoài Bảo", "3. Trần Phạm Gia Bảo", "4. Nguyễn Ngọc Diễm", 
     "5. Huỳnh Vũ Duy", "6. Võ Minh Duy", "7. Đỗ Lâm Hạnh Duyên", "8. Nguyễn Phan Khánh Duyên", 
@@ -62,21 +61,22 @@
     select.appendChild(opt);
   });
 
-  const trắcnghiệm = [
-    { q: "Câu 1. Bạn Hà khi lên lớp 6 còn rất rụt rè và nhút nhát. Vậy nếu em là bạn của Hà em sẽ giúp bạn như thế nào để bạn tự tin hơn?", o: ["A. Chê bai bạn, kẻ xấu bạn.", "B. Lôi kéo bạn khác cùng trêu bạn.", "C. Tâm sự, gần gũi và rủ bạn tham gia vào các hoạt động chung cùng với mình.", "D. Mặc kệ bạn, ai có thân người ấy lo."], a: 2 },
+  const tracnghiem = [
+    { q: "Câu 1. Bạn Hà khi lên lớp 6 còn rất rụt rè và nhút nhát. Vậy nếu em là bạn của Hà em sẽ giúp bạn như thế nào để bạn tự tin hơn?", o: ["A. Chê bai bạn, kể xấu bạn.", "B. Lôi kéo bạn khác cùng trêu bạn.", "C. Tâm sự, gần gũi và rủ bạn tham gia vào các hoạt động chung cùng với mình.", "D. Mặc kệ bạn, ai có thân người ấy lo."], a: 2 },
     { q: "Câu 2. Để luôn tự tin trong học tập thì chúng ta cần:", o: ["A. Trên lớp tích cực quan sát, lắng nghe, học hỏi về nhà chịu khó học bài.", "B. Chép hết vào vở về nhà học thuộc.", "C. Đến lớp mượn vở bài tập của các bạn chép đầy đủ.", "D. Xin cô cho ngồi cạnh bạn học giỏi để tiện nhìn bài bạn."], a: 0 },
     { q: "Câu 3. Khi em gặp chuyện buồn em cần:", o: ["A. Giấu kín trong lòng không cho ai biết.", "B. Mạnh dạn chia sẻ nỗi buồn với bạn bè và những người thân yêu.", "C. Chịu đựng một mình.", "D. Rủ bạn đi chơi game."], a: 1 },
-    { q: "Câu 4. Những việc làm nào sau đây phù hợp để phát triển bản thân?", o: ["A. Thường xuyên tập thể dục thể thao, ăn uống điều độ hợp lí", "B. Thường xuyên lướt zalo, facebook tán gẫu với bạn bè", "C. Ngủ nhiều, ăn uống tùy thích theo bản thân, vận động ít.", "D. Ăn kiêng, hạn chế ăn rau củ, ăn thịt là chủ yếu."], a: 0 },
-    { q: "Câu 5. Tính cách nào sẽ giúp bạn thuận lợi hơn trong cuộc sống?", o: ["A. Hay cáu gắt, to tiếng với người khác", "B. Hòa đồng, vui vẻ thân thiện với mọi người", "C. Ít nói, nhút nhát, thiếu tự tin.", "D. Kiêu ngạo, đắc thắng trước mọi người."], a: 1 },
+    { q: "Câu 4. Những việc làm nào sau đây phù hợp để phát triển bản thân?", o: ["A. Thường xuyên tập thể dục thể thao, ăn uống điều độ hợp lí.", "B. Thường xuyên lướt zalo, facebook tán gẫu với bạn bè.", "C. Ngủ nhiều, ăn uống tùy thích theo bản thân, vận động ít.", "D. Ăn kiêng, hạn chế ăn rau củ, ăn thịt là chủ yếu."], a: 0 },
+    { q: "Câu 5. Tính cách nào sẽ giúp bạn thuận lợi hơn trong cuộc sống?", o: ["A. Hay cáu gắt, to tiếng với người khác.", "B. Hòa đồng, vui vẻ thân thiện với mọi người.", "C. Ít nói, nhút nhát, thiếu tự tin.", "D. Kiêu ngạo, đắc thắng trước mọi người."], a: 1 },
     { q: "Câu 6. Khi đi học về, em thấy em trai lục tung sách vở của mình, em sẽ:", o: ["A. Tức giận, quát mắng em.", "B. Khóc toáng lên, nhờ bố mẹ giải quyết.", "C. Nhẹ nhàng khuyên bảo em và sẽ cất đồ đạc cẩn thận hơn nữa.", "D. Lao vào lục tung đồ của em lên để trả thù em."], a: 2 },
     { q: "Câu 7. Em nghe thấy có bạn trong lớp nói bạn A hay nói xấu về em. Khi nghe thấy các bạn trong lớp nói như vậy em sẽ giải quyết như thế nào?", o: ["A. Gặp bạn A, tâm sự với bạn để hai người hiểu nhau hơn.", "B. Xa lánh và không chơi với A nữa.", "C. Tìm ra điểm xấu của A để nói xấu lại bạn.", "D. Nhờ một anh lớp trên bắt nạt A cho bỏ tức."], a: 0 },
     { q: "Câu 8. Gần đến kì thi, một số bạn tỏ ra rất lo lắng và căng thẳng. Vậy em sẽ làm gì để giúp đỡ các bạn ấy?", o: ["A. Cho các bạn mượn sách để học.", "B. Khuyên bạn nên đọc truyện cười để bớt căng thẳng.", "C. Chia sẻ kinh nghiệm học tập của mình cho các bạn, khuyên các bạn phải có phương pháp học tập phù hợp để chủ động chiếm lĩnh kiến thức.", "D. Rủ các bạn đi chơi đá bóng cho bớt căng thẳng."], a: 2 },
-    { q: "Câu 9. Những việc làm nào sau đây thể hiện mối quan hệ hoà đồng với thầy cô và bạn bè?", o: ["A. Chỉ xin ý kiến hoặc nhờ thầy cô khi nào thật sự cần thiết.", "B. Giúp đỡ những hoàn cảnh khó khăn cả trong và ngoài lớp tuỳ theo khả năng của mình.", "C. Chơi theo nhóm riêng và lập nhóm messenger trao đổi, tâm sự với thầy cô.", "D. Chỉ chia sẻ, nói chuyện với những bạn chơi thân trong lớp."], a: 1 },
+    { q: "Câu 9. Những việc làm nào sau đây thể hiện mối quan hệ hoà đồng với thầy cô và bạn bè?", o: ["A. Chỉ xin ý kiến hoặc nhờ thầy cô khi thêm về những vấn đề liên quan tới việc học tập ở trường lớp.", "B. Giúp đỡ những hoàn cảnh khó khăn cả trong và ngoài lớp tuỳ theo khả năng của mình.", "C. Chơi theo nhóm riêng và lập nhóm messenger trao đổi, tâm sự với thầy cô.", "D. Chỉ chia sẻ, nói chuyện với những bạn chơi thân trong lớp."], a: 1 },
     { q: "Câu 10. Nếu em chưa hiểu những điều cô giáo vừa giảng, em nên làm gì?", o: ["A. Tự tìm hiểu lại.", "B. Không nói ra vì sợ các bạn chê cười.", "C. Nói với các bạn rằng cô dạy chán nên không hiểu.", "D. Hỏi lại để cô giải thích."], a: 3 },
     { q: "Câu 11. Em đã rèn luyện tính kiên trì, chăm chỉ trong lao động và cuộc sống hằng ngày như thế nào?", o: ["A. Làm việc nhà khi nào bố mẹ nhờ.", "B. Chỉ làm những việc nhẹ nhàng khi có thời gian.", "C. Những việc khó không cần phải cố gắng làm.", "D. Luôn cố gắng, kiên trì để hoàn thành mọi công việc đã nhận."], a: 3 },
-    { q: "Câu 12. Khi cả nhóm em được giao một bài tập khó thì em sẽ làm gì để cùng giải quyết với các bạn khác trong nhóm?", o: ["A. Thảo luận với các bạn, lên kế hoạch và phân công nhiệm vụ rõ ràng để mỗi bạn đảm nhận mỗi việc, tránh việc đùn đẩy để hoàn thành tốt bài tập được giao.", "B. Không quan tâm vì đấy là bài tập nhóm, có những bạn khác sẽ làm.", "C. Làm sơ sài, qua loa cho xong phần việc của mình.", "D. Tự nghiên cứu, tìm tòi nguồn tài liệu để hoàn thành phần việc của mình không cần trao đổi với cả nhóm."], a: 0 },
+    { q: "Câu 12. Khi cả nhóm em được giao một bài tập khó thì em sẽ làm gì để cùng giải quyết với các bạn khác trong nhóm?", o: ["A. Thảo luận với các bạn, lên kế hoạch và phân công nhiệm vụ rõ ràng để mỗi bạn đảm nhận mỗi việc, tránh việc đùn đẩy để hoàn thành tốt bài tập được giao.", "B. Không quan tâm vì đây là bài tập nhóm, có những bạn khác sẽ làm.", "C. Làm sơ sài, qua loa cho xong phần việc của mình.", "D. Tự nghiên cứu, tìm tòi nguồn tài liệu để hoàn thành phần việc của mình không cần trao đổi với cả nhóm."], a: 0 },
     { q: "Câu 13. Khi biết điểm yếu của một bạn trong lớp, em sẽ làm gì?", o: ["A. Chế giễu, đùa cợt điểm yếu của bạn trước các bạn khác.", "B. Sẽ cho bạn chép bài hoặc nói cho bạn đáp án trong lần kiểm tra tiếp theo.", "C. Tìm và nhờ, hoặc giao cho bạn những việc liên quan đến điểm yếu này.", "D. Động viên, giúp đỡ bạn không tự ti, không né tránh mà từng bước khắc phục điểm yếu của bản thân."], a: 3 },
     { q: "Câu 14. Khi một bạn trong lớp em không hiểu vô tình hay cố ý làm hỏng hộp bút mà em yêu thích nhất, em sẽ xử lí như thế nào?", o: ["A. Bực tức ra mặt, quát to vào mặt bạn cho hả giận.", "B. Hỏi lí do vì sao bạn lại làm như vậy và nhẹ nhàng nói cho bạn này biết suy nghĩ của bản thân lúc này.", "C. Ngay lập tức đòi bạn phải sửa hoặc đền lại cho mình hộp bút khác.", "D. Lên mạng xã hội cà khịa bạn đó vì đã làm hỏng hộp bút yêu thích của mình."], a: 1 },
     { q: "Câu 15. Em sẽ làm gì nếu được giao một bài tập/ dự án trong học tập thuộc vào sở đoản (điểm yếu) của mình.", o: ["A. Xin cô giáo/ thầy giáo đổi cho mình một đề bài/ dự án khác đúng theo sở trường của bản thân.", "B. Giả ốm để xin phép giáo viên không làm bài tập/ dự án này.", "C. Tìm cách tránh né bài tập/ dự án hoặc đẩy sang cho bạn khác trong nhóm, trong lớp làm.", "D. Có kế hoạch cụ thể, rõ ràng; chia sẻ và tranh thủ sự hỗ trợ, giúp đỡ của thầy cô và bạn bè để hoàn thành bài tập/ dự án được giao."], a: 3 },
     { q: "Câu 16. Em đã làm thế nào để xác định được điểm mạnh, điểm hạn chế của bản thân?", o: ["A. Tích cực tham gia các hoạt động thiện nguyện để bộc lộ điểm mạnh, điểm hạn chế của bản thân.", "B. Điểm mạnh, điểm hạn chế của bản thân là những điểm có sẵn ở mỗi người nên em không cần làm gì cũng xác định được.", "C. Lắng nghe nhận xét, đánh giá của các bạn và những người xung quanh.", "D. Kết hợp tự đánh giá bản thân dựa trên kết quả giao tiếp...với nhận xét, đánh giá của mọi người."], a: 3 },
     { q: "Câu 17. Khi xuất hiện cảm xúc tiêu cực, em đã giải toả cảm xúc đó bằng cách nào?", o: ["A. Để cảm xúc tiêu cực bộc lộ một cách tự nhiên, không cần giải toả.", "B. Hít thở sâu hoặc đi dạo.", "C. Quát hoặc nói thật to với người đối diện cho hả giận.", "D. Đi xem phim hay chơi điện tử."], a: 1 },
+    { q: "Câu 18. Khi gặp khó khăn trong học tập hoặc trong cuộc sống, em đã làm
